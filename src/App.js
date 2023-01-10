@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
-function App() {
+const App = () => {
+  let [clients, setClients] = useState([])
+
+  const getClients = () => {
+    axios
+      .get('http://localhost:8000/clients_api/clients/')
+      .then(
+        (response) => setClients(response.data),
+        (err) => console.error(err)
+      )
+      .catch((error) => console.error(error))
+  }
+
+  useEffect(() => {
+    getClients()
+  }, [])
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div className="clients">
+        {clients.map((client) => {
+          return (
+            <div className="client" key={client.id}>
+              <h4>Name: {client.name}</h4>
+              <h5>Age: {client.age}</h5>
+            </div>
+          )
+        })}
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
+
