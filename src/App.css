@@ -37,6 +37,12 @@
   }
 }
 
+
 .form-control {
-  max-width: 30%;
+  max-width: 80%;
+}
+
+.card {
+  padding: 1em;
+  margin: 1em;
 }

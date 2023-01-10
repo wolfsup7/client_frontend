@@ -9,6 +9,7 @@ import './App.css';
 const App = () => {
   const [clients, setClients] = useState([])
   const [addClient, setAddClient] = useState(false)
+  const [editClient, setEditClient] = useState(false)
 
   const getClients = () => {
     axios.get('https://k9nails.herokuapp.com/api/clients')
@@ -16,11 +17,11 @@ const App = () => {
       .catch((error) => console.error(error))
   }
 
-  const handleCreate = (addClient) => {
-    axios.post('https://k9nails.herokuapp.com/api/clients', addClient)
+  const handleCreate = (data) => {
+    axios.post('https://k9nails.herokuapp.com/api/clients', data)
       .then((response) => {
         console.log(response)
-        let newClients = [...clients, response.addClient]
+        let newClients = [...clients, response.data]
         setClients(newClients)
       })
       setAddClient(false)
@@ -35,17 +36,25 @@ const App = () => {
   }
 
   const handleUpdate = (editClient) => {
-    console.log(editClient)
-    axios
-      .put('https://k9nails.herokuapp.com/api/clients/' + editClient.id, editClient)
+    axios.put('https://k9nails.herokuapp.com/api/clients/' + editClient.id, editClient)
       .then((response) => {
-        getClients()
-      })
+        console.log(response)
+  
+        let newClients = clients.map((client) => {
+            return client.id !== editClient.id ? client : editClient
+          })
+          setClients(newClients)
+        })
+        setEditClient(false)
   }
   
   
   const toggleAddClient = () => {
     setAddClient(prev => !prev)
+  }
+
+  const toggleEditClient = () => {
+    setEditClient(prev => !prev)
   }
 
   useEffect(() => {
@@ -73,15 +82,20 @@ const App = () => {
               <h4>Name: {client.name}</h4>
               <h5>Breed: {client.breed}</h5>
               <h5>Age: {client.age}</h5>
-              <img src={client.picture} alt="" height={200} width={200}/>
+              <img src={client.picture} alt="" height={300} width={300}/>
               <h5>Address: {client.address}</h5>
               <h5>Phone: {client.phone}</h5>
               <h5>Appointment: {client.appointment}</h5>
-              <Edit handleUpdate={handleUpdate} id={client.id} />
-              <button onClick={handleDelete} value={client.id}>
+              <button class="btn btn-warning" onClick={toggleEditClient}>Edit</button>
+              <div>
+                {
+                  editClient ? <Edit client={client} handleUpdate={handleUpdate}/> : null
+                }
+              </div>
+              <button className="btn btn-danger" onClick={handleDelete} value={client.id}>
                 Delete
               </button>
-            </div>
+            </div>  
           )
         })}
       </div>

@@ -15,41 +15,40 @@ const Edit = (props) => {
 
 
     return (
-    <>
-        <details>
-        <summary>Edit Client</summary>
+        <div className="container">
         <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Name: </label>
-            <input type="text" name="name" onChange={handleChange} value={client.name}/>
             <br />
+            <div className="form-floating mb-3">
+            <input className="form-control" type="text" name="name" placeholder="Name" value={client.name} onChange={handleChange}/>
+            </div>
             <br />
-            <label htmlFor="breed">Breed: </label>
-            <input type="text" name="breed" onChange={handleChange} value={client.breed}/>
+            <div className="form-floating mb-3">
+            <input className="form-control" type="text" name="breed" placeholder="Breed" value={client.breed} onChange={handleChange}/>
+            </div>
             <br />
+            <div className="form-floating mb-3">
+            <input className="form-control" type="number" name="age" placeholder="Age" value={client.age} onChange={handleChange}/>
+            </div>
             <br />
-            <label htmlFor="age">Age: </label>
-            <input type="number" name="age" onChange={handleChange} value={client.age}/>
+            <div className="form-floating mb-3">
+            <input className="form-control" type="text" name="picture" placeholder="Picture URL" value={client.picture} onChange={handleChange}/>
+            </div>
             <br />
+            <div className="form-floating mb-3">
+            <input className="form-control" type="text" name="address" placeholder="Address" value={client.address} onChange={handleChange}/>
+            </div>
             <br />
-            <label htmlFor="picture">Picture: </label>
-            <input type="text" name="picture" onChange={handleChange} value={client.picture}/>
+            <div className="form-floating mb-3">
+            <input className="form-control" type="text" name="phone" placeholder="Phone Number" value={client.phone} onChange={handleChange}/>
+            </div>
             <br />
+            <div className="form-floating mb-3">
+            <input className="form-control" type="text" name="appointment" placeholder="Appointment" value={client.appointment} onChange={handleChange}/>
+            </div>
             <br />
-            <label htmlFor="address">Address: </label>
-            <input type="text" name="address" onChange={handleChange} value={client.address}/>
-            <br />
-            <br />
-            <label htmlFor="phone">Phone: </label>
-            <input type="text" name="phone" onChange={handleChange} value={client.phone}/>
-            <br />
-            <br />
-            <label htmlFor="appointment">Appointment: </label>
-            <input type="text" name="appointment" onChange={handleChange} value={client.appointment}/>
-            <br />
-            <input type="submit"/>
+            <input className="form-control btn-success" type="submit"/>
         </form>
-        </details>
-    </>
+    </div>
     )
 }
 

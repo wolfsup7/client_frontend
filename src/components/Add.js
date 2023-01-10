@@ -15,40 +15,40 @@ const Add = (props) => {
     }
 
     return (
-    <div>
+    <>
         <form onSubmit={handleSubmit}>
             <br />
             <div className="form-floating mb-3">
-            <input className="form-control" type="text" name="name" placeholder="Name" value={client.name} onChange={handleChange}/>
+            <input className="form-control" type="text" name="name" placeholder="Name" onChange={handleChange}/>
             </div>
             <br />
             <div className="form-floating mb-3">
-            <input className="form-control" type="text" name="breed" placeholder="Breed" value={client.breed} onChange={handleChange}/>
+            <input className="form-control" type="text" name="breed" placeholder="Breed" onChange={handleChange}/>
             </div>
             <br />
             <div className="form-floating mb-3">
-            <input className="form-control" type="number" name="age" placeholder="Age" value={client.age} onChange={handleChange}/>
+            <input className="form-control" type="number" name="age" placeholder="Age" onChange={handleChange}/>
             </div>
             <br />
             <div className="form-floating mb-3">
-            <input className="form-control" type="text" name="picture" placeholder="Picture URL" value={client.picture} onChange={handleChange}/>
+            <input className="form-control" type="text" name="picture" placeholder="Picture URL" onChange={handleChange}/>
             </div>
             <br />
             <div className="form-floating mb-3">
-            <input className="form-control" type="text" name="address" placeholder="Address" value={client.address} onChange={handleChange}/>
+            <input className="form-control" type="text" name="address" placeholder="Address" onChange={handleChange}/>
             </div>
             <br />
             <div className="form-floating mb-3">
-            <input className="form-control" type="text" name="phone" placeholder="Phone Number" value={client.phone} onChange={handleChange}/>
+            <input className="form-control" type="text" name="phone" placeholder="Phone Number" onChange={handleChange}/>
             </div>
             <br />
             <div className="form-floating mb-3">
-            <input className="form-control" type="text" name="appointment" placeholder="Appointment" value={client.appointment} onChange={handleChange}/>
+            <input className="form-control" type="text" name="appointment" placeholder="Appointment" onChange={handleChange}/>
             </div>
             <br />
             <input className="form-control btn-success" type="submit"/>
         </form>
-    </div>
+    </>
     )
 }
 
